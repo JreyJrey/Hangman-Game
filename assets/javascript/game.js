@@ -12,6 +12,7 @@ var placeholder = newWord.split("");
     for (var i = 0; i < placeholder.length; i++) {
       placeholder[i] = " _";
     };
+var blankArray = []
 
 // console.log(newWord.val(length))
 
@@ -28,10 +29,10 @@ var newWordFunc = function(){
       newWordCount = newWord.length;
       // console.log(newWordCount)
       // function(){
-      for( i=0; i < newWordCount; i++){
-      $("#result").append("_ ")
-      // console.log(newWordCount)
+      for( i=0; i < ansArray.length; i++){
+      blankArray.push("_ ")
       }
+      $("#result").append(blankArray)
 
       guessesCount = 0;
       $("#lettersGuessed").empty();
@@ -42,7 +43,7 @@ var newWordFunc = function(){
       $("#Guess").empty();
       $("#Guess").append("You have "+(totalGuess)+" guesses.");
 }
-
+console.log(blankArray)
 
 
 
@@ -58,7 +59,12 @@ var letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", 
 
 var checkGuess = function (x){
     if(ansArray.includes(x)) {
-      correct = true}
+      // for loop thru the array to check every index
+     var y = ansArray.indexOf(x)
+     blankArray[y] = x
+     $("#result").empty()
+     $("#result").append(blankArray)
+    }
     else{correct = false}
 }
 
